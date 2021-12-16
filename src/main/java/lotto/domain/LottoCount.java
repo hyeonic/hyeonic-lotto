@@ -23,7 +23,7 @@ public class LottoCount {
     private void validateNumberFormat(String inputLottoCount) {
         try {
             Integer.parseInt(inputLottoCount);
-        } catch (NumberFormatException e) {
+        } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(VALID_NUMBER_FORMAT);
         }
     }

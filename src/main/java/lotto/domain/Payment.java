@@ -21,7 +21,7 @@ public class Payment {
     private void validateNumberFormat(String inputPayment) {
         try {
             Integer.parseInt(inputPayment);
-        } catch (NumberFormatException e) {
+        } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(VALID_NUMBER_FORMAT);
         }
     }
