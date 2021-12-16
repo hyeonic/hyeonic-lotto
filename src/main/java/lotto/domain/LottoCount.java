@@ -43,4 +43,8 @@ public class LottoCount {
     public int calculate() {
         return lottoCount * LOTTO_PRICE;
     }
+
+    public int getLottoCount() {
+        return lottoCount;
+    }
 }
