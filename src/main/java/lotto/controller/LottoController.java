@@ -8,8 +8,10 @@ import lotto.domain.LottoCount;
 import lotto.domain.LottoMachine;
 import lotto.domain.LottoNumber;
 import lotto.domain.LottoNumberGenerator;
+import lotto.domain.LottoResult;
 import lotto.domain.LottoTicket;
 import lotto.domain.Payment;
+import lotto.domain.Rank;
 import lotto.domain.WinningNumbers;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -30,6 +32,9 @@ public class LottoController {
         WinningNumbers winningNumbers = lottoMachine.generateWinningNumber();
 
         printWinningNumbers(winningNumbers);
+
+        List<Rank> ranks = lottoMachine.calculate(winningNumbers, lottoTickets);
+        printResult(lottoCount, payment, ranks);
     }
 
     private LottoCount getLottoCount() {
@@ -56,5 +61,12 @@ public class LottoController {
             .collect(toList());
 
         OutputView.printWinningNumbers(numbers);
+    }
+
+    private void printResult(LottoCount lottoCount, Payment payment, List<Rank> ranks) {
+        LottoResult lottoResult = new LottoResult(lottoCount, payment, ranks);
+
+        OutputView.printLottoResult(lottoCount.getLottoCount(), payment.getPayment(), lottoResult.maxRank(),
+            lottoResult.totalReward(), lottoResult.yield());
     }
 }
