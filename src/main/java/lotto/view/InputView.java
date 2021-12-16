@@ -11,11 +11,15 @@ public class InputView {
 
     public static String lottoCount() {
         System.out.println(INPUT_LOTTO_COUNT_MESSAGE);
-        return Console.readLine();
+        String input = Console.readLine();
+        System.out.println();
+        return input;
     }
 
     public static String payment(int price) {
         System.out.printf(INPUT_PRICE_MESSAGE_FORMAT, price);
-        return Console.readLine();
+        String input = Console.readLine();
+        System.out.println();
+        return input;
     }
 }
