@@ -1,4 +1,4 @@
-package domain;
+package lotto.domain;
 
 public class LottoCount {
     private static final int DEFAULT_LOTTO_COUNT = 0;
