@@ -7,15 +7,15 @@ import lotto.view.OutputView;
 public class LottoController {
 
     public void run() {
-        getLottoCount();
+        LottoCount lottoCount = getLottoCount();
     }
 
-    private void getLottoCount() {
+    private LottoCount getLottoCount() {
         try {
-            LottoCount lottoCount = new LottoCount(InputView.lottoCount());
+            return new LottoCount(InputView.lottoCount());
         } catch (IllegalArgumentException e) {
             OutputView.printErrorMessage(e.getMessage());
-            getLottoCount();
+            return getLottoCount();
         }
     }
 }

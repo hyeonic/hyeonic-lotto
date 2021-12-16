@@ -3,6 +3,7 @@ package lotto.view;
 public class LottoCount {
     private static final int DEFAULT_LOTTO_COUNT = 0;
     private static final int MAX_LOTTO_COUNT = 100;
+    private static final int LOTTO_PRICE = 1000;
 
     private static final String VALID_NUMBER_FORMAT = "[ERROR] 로또 개수는 숫자여아 합니다.";
     private static final String VALID_NEGATIVE_NUMBER = "[ERROR] 로또 개수는 0개 이상이어야 합니다.";
@@ -37,5 +38,9 @@ public class LottoCount {
         if (lottoCount > MAX_LOTTO_COUNT) {
             throw new IllegalArgumentException(VALID_MAXIMUM_COUNT);
         }
+    }
+
+    public int calculate() {
+        return lottoCount * LOTTO_PRICE;
     }
 }
