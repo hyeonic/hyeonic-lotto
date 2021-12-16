@@ -6,4 +6,9 @@ public class LottoNumber {
     public LottoNumber(int lottoNumber) {
         this.lottoNumber = lottoNumber;
     }
+
+    @Override
+    public String toString() {
+        return String.valueOf(lottoNumber);
+    }
 }

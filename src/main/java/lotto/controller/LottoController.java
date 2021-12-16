@@ -7,6 +7,7 @@ import lotto.domain.LottoMachine;
 import lotto.domain.LottoNumberGenerator;
 import lotto.domain.LottoTicket;
 import lotto.domain.Payment;
+import lotto.domain.WinningNumbers;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -23,6 +24,7 @@ public class LottoController {
 
         LottoMachine lottoMachine = new LottoMachine(lottoNumberGenerator);
         List<LottoTicket> lottoTickets = lottoMachine.autoGenerate(lottoCount);
+        WinningNumbers winningNumbers = lottoMachine.generateWinningNumber();
     }
 
     private LottoCount getLottoCount() {

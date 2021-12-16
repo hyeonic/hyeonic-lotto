@@ -22,4 +22,8 @@ public class LottoMachine {
 
         return lottoTickets;
     }
+
+    public WinningNumbers generateWinningNumber() {
+        return new WinningNumbers(lottoNumberGenerator.generate());
+    }
 }
