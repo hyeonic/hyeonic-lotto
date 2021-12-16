@@ -13,4 +13,8 @@ public class WinningNumbers {
     public List<LottoNumber> getWinningNumbers() {
         return Collections.unmodifiableList(winningNumbers);
     }
+
+    public boolean isRight(LottoNumber lottoNumber) {
+        return winningNumbers.contains(lottoNumber);
+    }
 }
