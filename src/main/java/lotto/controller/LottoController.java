@@ -1,9 +1,12 @@
 package lotto.controller;
 
+import static java.util.stream.Collectors.*;
+
 import java.util.List;
 
 import lotto.domain.LottoCount;
 import lotto.domain.LottoMachine;
+import lotto.domain.LottoNumber;
 import lotto.domain.LottoNumberGenerator;
 import lotto.domain.LottoTicket;
 import lotto.domain.Payment;
@@ -25,6 +28,8 @@ public class LottoController {
         LottoMachine lottoMachine = new LottoMachine(lottoNumberGenerator);
         List<LottoTicket> lottoTickets = lottoMachine.autoGenerate(lottoCount);
         WinningNumbers winningNumbers = lottoMachine.generateWinningNumber();
+
+        printWinningNumbers(winningNumbers);
     }
 
     private LottoCount getLottoCount() {
@@ -43,5 +48,13 @@ public class LottoController {
             OutputView.printErrorMessage(e.getMessage());
             return getPayment(lottoCount);
         }
+    }
+
+    private void printWinningNumbers(WinningNumbers winningNumbers) {
+        List<String> numbers = winningNumbers.getWinningNumbers().stream()
+            .map(LottoNumber::toString)
+            .collect(toList());
+
+        OutputView.printWinningNumbers(numbers);
     }
 }
