@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LottoMachine {
     private static final int DEFAULT_INDEX = 0;
@@ -28,13 +29,9 @@ public class LottoMachine {
     }
 
     public List<Rank> calculate(WinningNumbers winningNumbers, List<LottoTicket> lottoTickets) {
-        List<Rank> ranks = new ArrayList<>();
-        for (LottoTicket lottoTicket : lottoTickets) {
-            List<LottoNumber> lottoNumbers = lottoTicket.getLottoNumbers();
-            int matchCount = winningNumbers.getMatchCount(lottoNumbers);
-            ranks.add(Rank.parseRank(matchCount));
-        }
-
-        return ranks;
+        return lottoTickets.stream()
+            .map(winningNumbers::getMatchCount)
+            .map(Rank::parseRank)
+            .collect(Collectors.toList());
     }
 }

@@ -10,6 +10,14 @@ public class LottoTicket {
         this.lottoNumbers = lottoNumbers;
     }
 
+    public int calculateMatchCount(LottoTicket winningNumbers) {
+        long count = winningNumbers.lottoNumbers.stream()
+            .filter(lottoNumbers::contains)
+            .count();
+
+        return Long.valueOf(count).intValue();
+    }
+
     public List<LottoNumber> getLottoNumbers() {
         return Collections.unmodifiableList(lottoNumbers);
     }

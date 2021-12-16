@@ -4,21 +4,17 @@ import java.util.Collections;
 import java.util.List;
 
 public class WinningNumbers {
-    private final List<LottoNumber> winningNumbers;
+    private final LottoTicket winningNumbers;
 
     public WinningNumbers(List<LottoNumber> winningNumbers) {
-        this.winningNumbers = winningNumbers;
+        this.winningNumbers = new LottoTicket(winningNumbers);
     }
 
     public List<LottoNumber> getWinningNumbers() {
-        return Collections.unmodifiableList(winningNumbers);
+        return Collections.unmodifiableList(winningNumbers.getLottoNumbers());
     }
 
-    public int getMatchCount(List<LottoNumber> lottoNumbers) {
-        long count = lottoNumbers.stream()
-            .filter(winningNumbers::contains)
-            .count();
-
-        return Long.valueOf(count).intValue();
+    public int getMatchCount(LottoTicket lottoTicket) {
+        return lottoTicket.calculateMatchCount(winningNumbers);
     }
 }
