@@ -1,4 +1,4 @@
-package lotto.view;
+package domain;
 
 public class LottoCount {
     private static final int DEFAULT_LOTTO_COUNT = 0;

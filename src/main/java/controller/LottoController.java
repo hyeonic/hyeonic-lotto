@@ -1,7 +1,7 @@
 package controller;
 
 import lotto.view.InputView;
-import lotto.view.LottoCount;
+import domain.LottoCount;
 import lotto.view.OutputView;
 
 public class LottoController {
