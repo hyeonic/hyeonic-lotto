@@ -22,6 +22,11 @@ public class LottoController {
     }
 
     private Payment getPayment(LottoCount lottoCount) {
-        return new Payment(InputView.payment(lottoCount.calculate()), lottoCount.calculate());
+        try {
+            return new Payment(InputView.payment(lottoCount.calculate()), lottoCount.calculate());
+        } catch (IllegalArgumentException e) {
+            OutputView.printErrorMessage(e.getMessage());
+            return getPayment(lottoCount);
+        }
     }
 }
