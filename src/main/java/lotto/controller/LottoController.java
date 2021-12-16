@@ -1,8 +1,8 @@
-package controller;
+package lotto.controller;
 
-import domain.Payment;
+import lotto.domain.LottoCount;
+import lotto.domain.Payment;
 import lotto.view.InputView;
-import domain.LottoCount;
 import lotto.view.OutputView;
 
 public class LottoController {
