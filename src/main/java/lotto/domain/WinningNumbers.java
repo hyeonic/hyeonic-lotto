@@ -4,6 +4,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class WinningNumbers {
+    private static final int DEFAULT_MATCH_COUNT = 0;
+
     private final List<LottoNumber> winningNumbers;
 
     public WinningNumbers(List<LottoNumber> winningNumbers) {
@@ -14,7 +16,18 @@ public class WinningNumbers {
         return Collections.unmodifiableList(winningNumbers);
     }
 
-    public boolean isRight(LottoNumber lottoNumber) {
+    public int getMatchCount(List<LottoNumber> lottoNumbers) {
+        int matchCount = DEFAULT_MATCH_COUNT;
+        for (LottoNumber lottoNumber : lottoNumbers) {
+            if (isRight(lottoNumber)) {
+                matchCount++;
+            }
+        }
+
+        return matchCount;
+    }
+
+    private boolean isRight(LottoNumber lottoNumber) {
         return winningNumbers.contains(lottoNumber);
     }
 }
