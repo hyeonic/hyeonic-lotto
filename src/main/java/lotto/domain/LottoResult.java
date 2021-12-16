@@ -3,6 +3,8 @@ package lotto.domain;
 import java.util.List;
 
 public class LottoResult {
+    private static final int PERCENT = 100;
+
     private final LottoCount lottoCount;
     private final Payment payment;
     private final List<Rank> ranks;
@@ -14,7 +16,7 @@ public class LottoResult {
     }
 
     public double yield() {
-        return (double) totalReward() / payment.getPayment();
+        return (double) totalReward() / payment.getPayment() * PERCENT;
     }
 
     public int totalReward() {
