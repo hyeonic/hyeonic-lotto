@@ -37,4 +37,8 @@ public class Payment {
             throw new IllegalArgumentException(VALID_COMPARE_PRICE);
         }
     }
+
+    public int getPayment() {
+        return payment;
+    }
 }
