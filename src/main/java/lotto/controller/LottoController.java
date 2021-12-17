@@ -17,17 +17,12 @@ import lotto.view.InputView;
 import lotto.view.OutputView;
 
 public class LottoController {
-    private final LottoNumberGenerator lottoNumberGenerator;
-
-    public LottoController(LottoNumberGenerator lottoNumberGenerator) {
-        this.lottoNumberGenerator = lottoNumberGenerator;
-    }
 
     public void run() {
         LottoCount lottoCount = getLottoCount();
         Payment payment = getPayment(lottoCount);
 
-        LottoMachine lottoMachine = new LottoMachine(lottoNumberGenerator);
+        LottoMachine lottoMachine = new LottoMachine(new LottoNumberGenerator());
         List<LottoTicket> lottoTickets = lottoMachine.autoGenerate(lottoCount);
         WinningNumbers winningNumbers = lottoMachine.generateWinningNumber();
 
@@ -64,7 +59,7 @@ public class LottoController {
     }
 
     private void printResult(LottoCount lottoCount, Payment payment, List<Rank> ranks) {
-        LottoResult lottoResult = new LottoResult(lottoCount, payment, ranks);
+        LottoResult lottoResult = new LottoResult(payment, ranks);
 
         OutputView.printLottoResult(lottoCount.getLottoCount(), payment.getPayment(), lottoResult.maxRank(),
             lottoResult.totalReward(), lottoResult.yield());
